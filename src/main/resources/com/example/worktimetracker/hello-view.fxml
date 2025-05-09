@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.worktimetracker.HelloController">
+   <left>
+      <VBox prefHeight="457.0" prefWidth="138.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#loadHome" text="홈" />
+            <Button mnemonicParsing="false" onAction="#loadMyInfo" prefWidth="59.0" text="내 정보" />
+            <Button mnemonicParsing="false" onAction="#loadEmployee_Management" text="직원 관리" />
+         </children>
+      </VBox>
+   </left>
+</BorderPane>

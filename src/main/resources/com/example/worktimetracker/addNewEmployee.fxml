@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.worktimetracker.addNewEmployeeController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="이름" textAlignment="CENTER" />
+            <TextField fx:id="nameField" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="생년월일" textAlignment="CENTER" />
+            <TextField fx:id="birthTextField" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="주소" />
+            <TextField fx:id="adressTextField" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="입사 날짜" textAlignment="CENTER" />
+            <TextField fx:id="employeeDateTextField" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="전화번호" textAlignment="CENTER" />
+            <TextField fx:id="phoneNumberTextField" />
+         </children>
+      </HBox>
+      <Button fx:id="addEmployeeButton" mnemonicParsing="false" onAction="#addEmployeeButtonClick" text="사원 추가" />
+   </children>
+</VBox>
