@@ -29,8 +29,9 @@ public class employee_managementController {
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
         employeedateColumn.setCellValueFactory(new PropertyValueFactory<>("employeedate"));
         phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        employeeTableView.setItems(EmployeeManager.instance.getEmployeeList());
+        employeeTableView.setItems(EmployeeManager.getEmployeeList());
     }
+
 
     @FXML
     private void openAddNewEmployeeWindow() throws IOException {

@@ -1,11 +1,13 @@
 module com.example.worktimetracker {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.prefs;
 
 
     opens com.example.worktimetracker to javafx.fxml;
     exports com.example.worktimetracker;
 
     opens employee to javafx.base, javafx.fxml;
-
+    opens csvControl to javafx.base, javafx.fxml;
+    opens util to javafx.base, javafx.fxml;
 }
