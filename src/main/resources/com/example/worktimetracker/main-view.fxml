@@ -3,14 +3,24 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.worktimetracker.MainController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.worktimetracker.MainController">
    <left>
-      <VBox prefHeight="457.0" prefWidth="138.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="0.0" prefWidth="140.0" style="-fx-background-color: #ba97e0;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#loadHome" text="홈" />
-            <Button mnemonicParsing="false" onAction="#loadMyInfo" prefWidth="59.0" text="내 정보" />
-            <Button mnemonicParsing="false" onAction="#loadEmployee_Management" text="직원 관리" />
+            <Button mnemonicParsing="false" onAction="#loadHome" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: transparent;" stylesheets="@../../../style.css" text="홈">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="18.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#loadMyInfo" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: transparent;" stylesheets="@../../../style.css" text="내 정보">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="18.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#loadEmployee_Management" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: transparent;" stylesheets="@../../../style.css" text="사원 관리">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="18.0" />
+               </font></Button>
          </children>
       </VBox>
    </left>

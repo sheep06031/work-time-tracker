@@ -17,11 +17,17 @@ public class EmployeeManager {
 
     public void addEmployee(Employee emp) {
         employeeList.add(emp);
-        try {
-            EmployeeCsvWriter.write(employeeList, util.PathManager.currentPath + java.io.File.separator + "WorkerInfo.csv");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        updateCsvFile();
+    }
+
+    public void editEmployee(Employee emp, String name, String birth, String address, String employeedate, String phoneNumber) {
+        emp.setName(name);
+        emp.setBirth(birth);
+        emp.setAddress(address);
+        emp.setEmployeedate(employeedate);
+        emp.setPhoneNumber(phoneNumber);
+
+        updateCsvFile();
     }
 
     public void setEmployeeList() {
@@ -37,4 +43,13 @@ public class EmployeeManager {
             }
         }
     }
+
+    public void updateCsvFile() {
+        try {
+            EmployeeCsvWriter.write(employeeList, util.PathManager.currentPath + java.io.File.separator + "WorkerInfo.csv");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

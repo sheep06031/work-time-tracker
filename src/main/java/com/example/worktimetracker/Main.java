@@ -4,6 +4,7 @@ import employee.EmployeeManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import util.PathManager;
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        Font.loadFont(getClass().getResourceAsStream("/fonts/BMHANNAProOTF.otf"), 12);
         String path = PathManager.getOrChoosePath(stage);
         if (path != null) {
             EmployeeManager.instance.setEmployeeList();
@@ -23,7 +25,7 @@ public class Main extends Application {
 
     private void showMainWindow(Stage stg, String path) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 600);
+        Scene scene = new Scene(fxmlLoader.load());
         stg.setTitle("Work Time Tracker");
         stg.setScene(scene);
         stg.show();

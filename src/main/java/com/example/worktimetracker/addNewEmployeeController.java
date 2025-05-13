@@ -30,8 +30,6 @@ public class addNewEmployeeController {
         Employee employee = new Employee(nameField.getText(), birthTextField.getText(), adressTextField.getText(),
                 employeeDateTextField.getText(), phoneNumberTextField.getText());
         employeeManager.addEmployee(employee);
-
-
         Stage stage = (Stage) addEmployeeButton.getScene().getWindow();
         stage.close();
     }

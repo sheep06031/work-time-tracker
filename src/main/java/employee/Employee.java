@@ -25,4 +25,10 @@ public class Employee {
     public String getAddress() { return address; }
     public String getEmployeedate() { return employeedate; }
     public String getPhoneNumber() { return phoneNumber; }
+
+    public void setName(String name) { this.name = name; }
+    public void setBirth(String birth) { this.birth = birth; }
+    public void setAddress(String address) { this.address = address; }
+    public void setEmployeedate(String employeedate) { this.employeedate = employeedate; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 }
