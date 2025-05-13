@@ -32,6 +32,10 @@ public class EmployeeManager {
 
     public void setEmployeeList() {
         FileChecker fileChecker = new FileChecker();
+        if (util.PathManager.currentPath == null) {
+            System.err.println("경로가 설정되지 않았습니다.");
+            return;
+        }
         if (fileChecker.checkWorkerInfoFile()) {
             try {
                 ObservableList<Employee> loadedList = EmployeeCsvReader.read(
@@ -40,7 +44,11 @@ public class EmployeeManager {
                 employeeList.addAll(loadedList);
             } catch (IOException e) {
                 e.printStackTrace();
+                javafx.application.Platform.runLater(() -> {
+                    new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR, "사원 정보 파일을 불러오거나 저장하는 중 오류가 발생했습니다.").showAndWait();
+                });
             }
+
         }
     }
 
@@ -49,7 +57,11 @@ public class EmployeeManager {
             EmployeeCsvWriter.write(employeeList, util.PathManager.currentPath + java.io.File.separator + "WorkerInfo.csv");
         } catch (IOException e) {
             e.printStackTrace();
+            javafx.application.Platform.runLater(() -> {
+                new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR, "사원 정보 파일을 불러오거나 저장하는 중 오류가 발생했습니다.").showAndWait();
+            });
         }
+
     }
 
 }

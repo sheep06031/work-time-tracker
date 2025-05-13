@@ -21,8 +21,6 @@ public class Employee_managementController {
     @FXML private TableColumn<Employee, String> phoneNumberColumn;
     @FXML private Button editEmplyeeButton;
 
-
-
     @FXML
     public void initialize() {
         employeeTableView.setItems(EmployeeManager.getEmployeeList());
@@ -37,28 +35,27 @@ public class Employee_managementController {
         editEmplyeeButton.setDisable(employeeTableView.getSelectionModel().getSelectedItem() == null);
     }
 
-        @FXML
-        private void openAddNewEmployeeWindow () throws IOException {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("addNewEmployee.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("사원 추가");
-            stage.show();
-        }
+    @FXML
+    private void openAddNewEmployeeWindow() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/worktimetracker/addNewEmployee.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("사원 추가");
+        stage.show();
+    }
 
-        @FXML
-        private void openEditEmployeeWindow () throws IOException {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("editEmployee.fxml"));
-            Parent root = loader.load();
-            EditEmployeeInfoController controller = loader.getController();
-            Employee emp = employeeTableView.getSelectionModel().getSelectedItem();
-            controller.setEmployee(emp);
-            controller.setEmployeeTableView(employeeTableView);
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("사원 정보 수정");
-            stage.show();
-        }
+    @FXML
+    private void openEditEmployeeWindow() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/worktimetracker/editEmployee.fxml"));
+        Parent root = loader.load();
+        EditEmployeeInfoController controller = loader.getController();
+        Employee emp = employeeTableView.getSelectionModel().getSelectedItem();
+        controller.setEmployee(emp);
+        controller.setEmployeeTableView(employeeTableView);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("사원 정보 수정");
+        stage.show();
+    }
 }
-

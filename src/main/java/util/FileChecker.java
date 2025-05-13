@@ -1,12 +1,15 @@
 package util;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class FileChecker {
     public boolean checkWorkerInfoFile() {
         String path = PathManager.currentPath;
+        if (path == null) {
+            System.err.println("경로가 설정되지 않았습니다.");
+            return false;
+        }
+
         String workerInfoFilePath = path + File.separator + "WorkerInfo.csv";
         File file = new File(workerInfoFilePath);
 
@@ -14,7 +17,7 @@ public class FileChecker {
             return true;
         } else {
             String header = "id,이름,생년월일,주소,입사 날짜,전화번호\n";
-            try (FileWriter writer = new FileWriter(workerInfoFilePath)) {
+            try (Writer writer = new OutputStreamWriter(new FileOutputStream(workerInfoFilePath), "UTF-8")) {
                 writer.write(header);
             } catch (IOException e) {
                 e.printStackTrace();
