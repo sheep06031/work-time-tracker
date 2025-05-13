@@ -1,4 +1,5 @@
 package com.example.worktimetracker;
+
 import employee.Employee;
 import employee.EmployeeManager;
 import javafx.event.ActionEvent;
@@ -7,8 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import csvControl.EmployeeCsvWriter;
-import java.io.IOException;
 
 
 public class EditEmployeeInfoController {

@@ -5,39 +5,73 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.worktimetracker.addNewEmployeeController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: EEEEEE;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.worktimetracker.addNewEmployeeController">
    <children>
       <HBox alignment="CENTER" prefHeight="70.0" prefWidth="150.0" spacing="10.0">
          <children>
-            <Label text="이름" textAlignment="CENTER" />
-            <TextField fx:id="nameField" />
+            <Label text="이름" textAlignment="CENTER">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="17.0" />
+               </font></Label>
+            <TextField fx:id="nameField">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="13.0" />
+               </font></TextField>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="70.0" prefWidth="150.0" spacing="10.0">
          <children>
-            <Label text="생년월일" textAlignment="CENTER" />
-            <TextField fx:id="birthTextField" />
+            <Label text="생년월일" textAlignment="CENTER">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="17.0" />
+               </font></Label>
+            <TextField fx:id="birthTextField" promptText="2000/01/01">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="13.0" />
+               </font></TextField>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="70.0" prefWidth="150.0" spacing="10.0">
          <children>
-            <Label text="주소" />
-            <TextField fx:id="adressTextField" />
+            <Label text="주소">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="17.0" />
+               </font></Label>
+            <TextField fx:id="adressTextField">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="13.0" />
+               </font></TextField>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="70.0" prefWidth="150.0" spacing="10.0">
          <children>
-            <Label text="입사 날짜" textAlignment="CENTER" />
-            <TextField fx:id="employeeDateTextField" />
+            <Label text="입사 날짜" textAlignment="CENTER">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="17.0" />
+               </font></Label>
+            <TextField fx:id="employeeDateTextField" promptText="2000/01/01">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="13.0" />
+               </font></TextField>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="70.0" prefWidth="150.0" spacing="10.0">
          <children>
-            <Label text="전화번호" textAlignment="CENTER" />
-            <TextField fx:id="phoneNumberTextField" />
+            <Label text="전화번호" textAlignment="CENTER">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="17.0" />
+               </font></Label>
+            <TextField fx:id="phoneNumberTextField">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="13.0" />
+               </font></TextField>
          </children>
       </HBox>
-      <Button fx:id="addEmployeeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addEmployeeButtonClick" text="사원 추가" />
+      <Button fx:id="addEmployeeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addEmployeeButtonClick" text="사원 추가">
+         <font>
+            <Font name="BM HANNA Pro OTF" size="13.0" />
+         </font></Button>
    </children>
 </VBox>

@@ -33,19 +33,9 @@ public class MainController {
     }
 
 
-
-
-
-
-
     private void loadCenter (String fxmlPath) throws IOException {
         Parent content = FXMLLoader.load(getClass().getResource(fxmlPath));
         borderPane.setCenter(content);
     }
-
-
-
-
-
 
 }

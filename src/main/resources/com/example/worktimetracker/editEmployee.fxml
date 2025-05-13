@@ -6,42 +6,76 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.worktimetracker.EditEmployeeInfoController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: EEEEEE;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.worktimetracker.EditEmployeeInfoController">
     <children>
         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="150.0" spacing="10.0">
             <children>
                 <Label text="이름" textAlignment="CENTER">
                <HBox.margin>
                   <Insets />
-               </HBox.margin></Label>
-                <TextField fx:id="editNameField" />
+               </HBox.margin>
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="16.0" />
+               </font></Label>
+                <TextField fx:id="editNameField">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="13.0" />
+               </font></TextField>
             </children>
         </HBox>
         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="150.0" spacing="10.0">
             <children>
-                <Label text="생년월일" textAlignment="CENTER" />
-                <TextField fx:id="editBirthTextField" />
+                <Label text="생년월일" textAlignment="CENTER">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="16.0" />
+               </font></Label>
+                <TextField fx:id="editBirthTextField" promptText="2000/01/01">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="13.0" />
+               </font></TextField>
             </children>
         </HBox>
         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="150.0" spacing="10.0">
             <children>
-                <Label text="주소" />
-                <TextField fx:id="editAddressTextField" />
+                <Label text="주소">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="16.0" />
+               </font></Label>
+                <TextField fx:id="editAddressTextField">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="13.0" />
+               </font></TextField>
             </children>
         </HBox>
         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="150.0" spacing="10.0">
             <children>
-                <Label text="입사 날짜" textAlignment="CENTER" />
-                <TextField fx:id="editEmployeeDateTextField" />
+                <Label text="입사 날짜" textAlignment="CENTER">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="16.0" />
+               </font></Label>
+                <TextField fx:id="editEmployeeDateTextField" promptText="2000/01/01">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="13.0" />
+               </font></TextField>
             </children>
         </HBox>
         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="150.0" spacing="10.0">
             <children>
-                <Label text="전화번호" textAlignment="CENTER" />
-                <TextField fx:id="editPhoneNumberTextField" />
+                <Label text="전화번호" textAlignment="CENTER">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="16.0" />
+               </font></Label>
+                <TextField fx:id="editPhoneNumberTextField">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="13.0" />
+               </font></TextField>
             </children>
         </HBox>
-        <Button fx:id="editEmployeeButton" mnemonicParsing="false" onAction="#editEmployeeButtonClick" text="정보 수정하기" />
+        <Button fx:id="editEmployeeButton" mnemonicParsing="false" onAction="#editEmployeeButtonClick" text="정보 수정하기">
+         <font>
+            <Font name="BM HANNA Pro OTF" size="13.0" />
+         </font></Button>
     </children>
 </VBox>

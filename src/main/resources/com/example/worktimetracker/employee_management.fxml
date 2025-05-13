@@ -5,18 +5,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.worktimetracker.employee_managementController">
+<AnchorPane prefHeight="500.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.worktimetracker.Employee_managementController">
     <children>
-      <Button layoutX="396.0" layoutY="307.0" mnemonicParsing="false" onAction="#openAddNewEmployeeWindow" text="사원 추가하기" />
-      <TableView fx:id="employeeTableView" layoutX="60.0" layoutY="38.0" onSort="#initialize" prefHeight="251.0" prefWidth="477.0">
+      <Button layoutX="446.0" layoutY="454.0" mnemonicParsing="false" onAction="#openAddNewEmployeeWindow" text="사원 추가하기" />
+      <TableView fx:id="employeeTableView" layoutX="43.0" layoutY="34.0" onSort="#initialize" prefHeight="400.0">
         <columns>
-          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="이름" />
-          <TableColumn fx:id="birthColumn" prefWidth="75.0" text="생년월일" />
-            <TableColumn fx:id="addressColumn" prefWidth="75.0" text="주소" />
-            <TableColumn fx:id="employeedateColumn" prefWidth="75.0" text="입사 날짜" />
-            <TableColumn fx:id="phoneNumberColumn" prefWidth="75.0" text="전화번호" />
-            <TableColumn fx:id="editColumn" prefWidth="75.0" />
+          <TableColumn fx:id="nameColumn" prefWidth="90.0" text="이름" />
+          <TableColumn fx:id="birthColumn" prefWidth="100.0" text="생년월일" />
+            <TableColumn fx:id="addressColumn" prefWidth="100.0" text="주소" />
+            <TableColumn fx:id="employeedateColumn" prefWidth="100.0" text="입사 날짜" />
+            <TableColumn fx:id="phoneNumberColumn" prefWidth="100.0" text="전화번호" />
         </columns>
       </TableView>
+      <Button fx:id="editEmplyeeButton" layoutX="334.0" layoutY="454.0" mnemonicParsing="false" onAction="#openEditEmployeeWindow" text="정보 수정하기" />
     </children>
 </AnchorPane>
