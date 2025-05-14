@@ -21,19 +21,24 @@
                <font>
                   <Font name="BM HANNA Pro OTF" size="25.0" />
                </font></Button>
-            <Button id="mainButton" mnemonicParsing="false" onAction="#loadMyInfo" prefHeight="40.0" prefWidth="200.0" stylesheets="@../../../style.css" text="내 정보">
+            <Button id="mainButton" mnemonicParsing="false" onAction="#loadEmployee_Management" prefHeight="40.0" prefWidth="200.0" stylesheets="@../../../style.css" text="직원 관리">
                <font>
                   <Font name="BM HANNA Pro OTF" size="25.0" />
                </font></Button>
-            <Button id="mainButton" mnemonicParsing="false" onAction="#loadEmployee_Management" prefHeight="40.0" prefWidth="200.0" stylesheets="@../../../style.css" text="사원 관리">
+            <Button id="mainButton" mnemonicParsing="false" onAction="#loadMyInfo" prefHeight="40.0" prefWidth="200.0" stylesheets="@../../../style.css" text="직원 급여관리">
                <font>
                   <Font name="BM HANNA Pro OTF" size="25.0" />
                </font></Button>
             <ImageView fitHeight="219.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Button id="exitButton" fx:id="exitButton" mnemonicParsing="false" onAction="#exitProgram" prefHeight="40.0" prefWidth="200.0" stylesheets="@../../../style.css" text="종료">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="25.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
    </left>
    <center>
-      <fx:include source="home.fxml"/>
+      <fx:include source="home.fxml" />
    </center>
 </BorderPane>

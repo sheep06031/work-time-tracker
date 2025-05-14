@@ -40,7 +40,5 @@ public class EditEmployeeInfoController {
         editPhoneNumberTextField.setText(employee.getPhoneNumber());
     }
 
-    public void setEmployeeTableView(TableView<Employee> tableView) {
-        this.employeeTableView = tableView;
-    }
+    public void setEmployeeTableView(TableView<Employee> tableView) { this.employeeTableView = tableView; }
 }

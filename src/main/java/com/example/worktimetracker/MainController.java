@@ -3,15 +3,24 @@ package com.example.worktimetracker;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MainController {
 
-    // 메인 창
+
+    @FXML private BorderPane borderPane;
+    @FXML private Button exitButton;
+
     @FXML
-    private BorderPane borderPane;
+    private void exitProgram() {
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        stage.close();
+    }
+
 
     @FXML
     private void loadHome() throws IOException {

@@ -17,6 +17,11 @@ public class EmployeeManager {
 
     public void addEmployee(Employee emp) {
         employeeList.add(emp);
+
+    }
+
+    public void deleteEmployee(Employee emp) {
+        employeeList.remove(emp);
         updateCsvFile();
     }
 
@@ -61,7 +66,6 @@ public class EmployeeManager {
                 new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR, "사원 정보 파일을 불러오거나 저장하는 중 오류가 발생했습니다.").showAndWait();
             });
         }
-
     }
 
 }

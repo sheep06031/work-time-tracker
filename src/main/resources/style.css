@@ -9,6 +9,16 @@
     -fx-background-color: #4dc6cb;
 }
 
+#exitButton {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+}
+
+#exitButton:hover {
+    -fx-text-fill: F67280;
+    -fx-background-color: #4dc6cb;
+}
+
 #employeeTableView {
     -fx-font-family: "BM HANNA Pro OTF";
     -fx-background-color: #EEEEEE;

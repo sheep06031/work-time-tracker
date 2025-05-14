@@ -95,4 +95,16 @@ public class Employee_managementController {
         stage.setTitle("사원 정보 수정");
         stage.show();
     }
+
+    @FXML
+    private void openAskDeleteEmployeeWindow() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/worktimetracker/askDeleteEmployee.fxml"));
+        Parent root = loader.load();
+        DeleteEmployeeController controller = loader.getController();
+        Employee emp = employeeTableView.getSelectionModel().getSelectedItem();
+        controller.setEmployee(emp);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }

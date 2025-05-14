@@ -32,7 +32,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="696.0" layoutY="665.0" prefHeight="38.0" prefWidth="345.0" spacing="20.0">
          <children>
-            <Button fx:id="deleteEmployeeButton" mnemonicParsing="false" style="-fx-background-color: #EEEEEE; -fx-border-radius: 4; -fx-border-color: #d6d6d6; -fx-font-family: &quot;BM HANNA Pro OTF&quot;;" text="직원 삭제" />
+            <Button fx:id="deleteEmployeeButton" mnemonicParsing="false" onAction="#openAskDeleteEmployeeWindow" style="-fx-background-color: #EEEEEE; -fx-border-radius: 4; -fx-border-color: #d6d6d6; -fx-font-family: &quot;BM HANNA Pro OTF&quot;;" text="직원 삭제" />
             <Button fx:id="editEmployeeButton" mnemonicParsing="false" onAction="#openEditEmployeeWindow" style="-fx-background-color: #EEEEEE; -fx-border-radius: 4; -fx-border-color: #d6d6d6; -fx-font-family: &quot;BM HANNA Pro OTF&quot;;" text="정보 수정하기" />
             <Button mnemonicParsing="false" onAction="#openAddNewEmployeeWindow" style="-fx-background-color: #EEEEEE; -fx-border-radius: 4; -fx-border-color: #d6d6d6; -fx-font-family: &quot;BM HANNA Pro OTF&quot;;" text="사원 추가하기" />
          </children>
