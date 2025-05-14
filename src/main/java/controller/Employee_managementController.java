@@ -1,4 +1,4 @@
-package com.example.worktimetracker;
+package controller;
 
 import employee.Employee;
 import employee.EmployeeManager;
@@ -24,7 +24,7 @@ public class Employee_managementController {
     @FXML private Button deleteEmployeeButton;
     @FXML private TextField searchTextField;
     @FXML private ChoiceBox<String> searchChoiceBox;
-    private FilteredList<Employee> flEmployee = new FilteredList(EmployeeManager.getEmployeeList(), p -> true);//Pass the data to a filtered list
+    private FilteredList<Employee> flEmployee = new FilteredList<>(EmployeeManager.getEmployeeList(), p -> true);
 
     @FXML
     public void initialize() {
@@ -44,21 +44,13 @@ public class Employee_managementController {
             if (selected == null) return;
             String keyword = newValue.toLowerCase().trim();
             switch (selected) {
-                case "이름":
-                    flEmployee.setPredicate(e -> e.getName().toLowerCase().contains(keyword));
-                    break;
-                case "생년월일":
-                    flEmployee.setPredicate(e -> e.getBirth().toLowerCase().contains(keyword));
-                    break;
-                case "전화번호":
-                    flEmployee.setPredicate(e -> e.getPhoneNumber().toLowerCase().contains(keyword));
-                    break;
+                case "이름" -> flEmployee.setPredicate(e -> e.getName().toLowerCase().contains(keyword));
+                case "생년월일" -> flEmployee.setPredicate(e -> e.getBirth().toLowerCase().contains(keyword));
+                case "전화번호" -> flEmployee.setPredicate(e -> e.getPhoneNumber().toLowerCase().contains(keyword));
             }
         });
 
-        searchChoiceBox.valueProperty().addListener((obs, oldVal, newVal) -> {
-            searchTextField.setText(searchTextField.getText());
-        });
+        searchChoiceBox.valueProperty().addListener((obs, oldVal, newVal) -> searchTextField.setText(searchTextField.getText()));
 
         boolean noSelection = employeeTableView.getSelectionModel().getSelectedItem() == null;
         editEmployeeButton.setDisable(noSelection);

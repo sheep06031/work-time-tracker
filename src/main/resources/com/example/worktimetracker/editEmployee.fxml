@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: EEEEEE;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.worktimetracker.EditEmployeeInfoController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: EEEEEE;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditEmployeeInfoController">
     <children>
         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="150.0" spacing="10.0">
             <children>

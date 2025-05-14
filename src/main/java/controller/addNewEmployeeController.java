@@ -1,4 +1,4 @@
-package com.example.worktimetracker;
+package controller;
 
 import employee.Employee;
 import employee.EmployeeManager;

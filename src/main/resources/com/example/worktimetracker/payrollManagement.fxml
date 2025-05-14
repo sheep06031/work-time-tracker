@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="720.0" prefWidth="1080.0" style="-fx-font-family: &quot;BM HANNA Pro OTF&quot;;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CalendarController">
+   <right>
+      <VBox alignment="CENTER" prefHeight="720.0" prefWidth="260.0" style="-fx-background-color: #e7e7e8;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../employee default picture.png" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="149.0" prefWidth="260.0">
+               <children>
+                  <VBox prefHeight="71.0" prefWidth="260.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="260.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="이름 : " />
+                              <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" text="직원을 선택해주세요!" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="260.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="전화번호 : " />
+                              <Text fx:id="phoneNumberText" strokeType="OUTSIDE" strokeWidth="0.0" text="직원을 선택해주세요!" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="260.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="직원 선택하기">
+                           <font>
+                              <Font name="BM HANNA Pro OTF" size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </HBox>
+               </children></VBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="시급 설정">
+                     <font>
+                        <Font name="BM HANNA Pro OTF" size="16.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="wageTextField" alignment="CENTER" prefHeight="25.0" prefWidth="132.0" promptText="쉼표를 제외해주세요" text="10030">
+                     <font>
+                        <Font name="BM HANNA Pro OTF" size="13.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <CheckBox mnemonicParsing="false" text="주휴수당 적용" />
+               </children>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets left="40.0" />
+         </BorderPane.margin></VBox>
+   </right>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
+         <children>
+              <HBox alignment="CENTER" prefHeight="40.0" prefWidth="890.0" spacing="3.0">
+                  <Label text="연도">
+                  <font>
+                     <Font name="BM HANNA Pro OTF" size="24.0" />
+                  </font>
+               </Label>
+                  <ComboBox fx:id="yearCombo" />
+               <VBox prefHeight="42.0" prefWidth="22.0" />
+                  <Label text="달">
+                  <font>
+                     <Font name="BM HANNA Pro OTF" size="24.0" />
+                  </font>
+               </Label>
+                  <ComboBox fx:id="monthCombo" />
+              </HBox>
+              <GridPane fx:id="calendarGrid" gridLinesVisible="true" hgap="5" vgap="5" />
+         </children>
+         <BorderPane.margin>
+            <Insets left="20.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>

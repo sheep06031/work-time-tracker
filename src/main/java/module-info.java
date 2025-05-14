@@ -8,5 +8,7 @@ module com.example.worktimetracker {
     exports com.example.worktimetracker;
 
     opens employee to javafx.base, javafx.fxml;
+    exports controller;
+    opens controller to javafx.fxml;
 
 }

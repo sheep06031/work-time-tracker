@@ -1,10 +1,9 @@
-package com.example.worktimetracker;
+package controller;
 
 import employee.Employee;
 import employee.EmployeeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 public class DeleteEmployeeController {
@@ -23,7 +22,7 @@ public class DeleteEmployeeController {
     @FXML
     private void deleteEmployee() {
         employeeManager.deleteEmployee(employee);
-        Stage stage = (Stage) closeButton.getScene().getWindow();
+        Stage stage = (Stage) deleteButton.getScene().getWindow();
         stage.close();
     }
 

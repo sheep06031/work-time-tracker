@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: EEEEEE;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.worktimetracker.Employee_managementController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: EEEEEE;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Employee_managementController">
     <children>
       <TableView id="employeeTableView" fx:id="employeeTableView" layoutX="40.0" layoutY="64.0" onSort="#initialize" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../style.css" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="64.0">
         <columns>

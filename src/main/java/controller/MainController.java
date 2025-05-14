@@ -1,4 +1,4 @@
-package com.example.worktimetracker;
+package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +34,7 @@ public class MainController {
 
     @FXML
     private void loadMyInfo() throws IOException {
-        loadCenter("/com/example/worktimetracker/myInfo.fxml");
+        loadCenter("/com/example/worktimetracker/payrollManagement.fxml");
     }
 
     private void loadCenter(String fxmlPath) throws IOException {
