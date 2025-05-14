@@ -2,6 +2,7 @@ package com.example.worktimetracker;
 
 import employee.Employee;
 import employee.EmployeeManager;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,20 +20,56 @@ public class Employee_managementController {
     @FXML private TableColumn<Employee, String> addressColumn;
     @FXML private TableColumn<Employee, String> employeedateColumn;
     @FXML private TableColumn<Employee, String> phoneNumberColumn;
-    @FXML private Button editEmplyeeButton;
+    @FXML private Button editEmployeeButton;
+    @FXML private Button deleteEmployeeButton;
+    @FXML private TextField searchTextField;
+    @FXML private ChoiceBox<String> searchChoiceBox;
+    private FilteredList<Employee> flEmployee = new FilteredList(EmployeeManager.getEmployeeList(), p -> true);//Pass the data to a filtered list
 
     @FXML
     public void initialize() {
-        employeeTableView.setItems(EmployeeManager.getEmployeeList());
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         birthColumn.setCellValueFactory(new PropertyValueFactory<>("birth"));
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
         employeedateColumn.setCellValueFactory(new PropertyValueFactory<>("employeedate"));
         phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        employeeTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
-            editEmplyeeButton.setDisable(newSel == null);
+
+        searchChoiceBox.getItems().addAll("이름", "생년월일", "전화번호");
+        searchChoiceBox.setValue("이름");
+
+        employeeTableView.setItems(flEmployee);
+
+        searchTextField.textProperty().addListener((obs, oldValue, newValue) -> {
+            String selected = searchChoiceBox.getValue();
+            if (selected == null) return;
+            String keyword = newValue.toLowerCase().trim();
+            switch (selected) {
+                case "이름":
+                    flEmployee.setPredicate(e -> e.getName().toLowerCase().contains(keyword));
+                    break;
+                case "생년월일":
+                    flEmployee.setPredicate(e -> e.getBirth().toLowerCase().contains(keyword));
+                    break;
+                case "전화번호":
+                    flEmployee.setPredicate(e -> e.getPhoneNumber().toLowerCase().contains(keyword));
+                    break;
+            }
         });
-        editEmplyeeButton.setDisable(employeeTableView.getSelectionModel().getSelectedItem() == null);
+
+        searchChoiceBox.valueProperty().addListener((obs, oldVal, newVal) -> {
+            searchTextField.setText(searchTextField.getText());
+        });
+
+        boolean noSelection = employeeTableView.getSelectionModel().getSelectedItem() == null;
+        editEmployeeButton.setDisable(noSelection);
+        deleteEmployeeButton.setDisable(noSelection);
+
+        employeeTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
+            boolean disable = newSel == null;
+            editEmployeeButton.setDisable(disable);
+            deleteEmployeeButton.setDisable(disable);
+        });
+        employeeTableView.getColumns().forEach(col -> col.setReorderable(false));
     }
 
     @FXML

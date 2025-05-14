@@ -26,7 +26,7 @@ tasks.withType(JavaCompile) {
 
 application {
   mainModule = 'com.example.worktimetracker'
-  mainClass = 'com.example.worktimetracker.HelloApplication'
+  mainClass = 'com.example.worktimetracker.Main'
 }
 
 javafx {
@@ -54,4 +54,6 @@ jlink {
 jlinkZip {
   group = 'distribution'
 }
+
+
 

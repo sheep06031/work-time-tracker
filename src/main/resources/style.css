@@ -8,3 +8,75 @@
 #mainButton:hover {
     -fx-background-color: #4dc6cb;
 }
+
+#employeeTableView {
+    -fx-font-family: "BM HANNA Pro OTF";
+    -fx-background-color: #EEEEEE;
+    -fx-table-cell-border-color: #EEEEEE;
+    -fx-control-inner-background: #EEEEEE;
+    -fx-border-color: #d6d6d6;
+    -fx-border-radius : 6;
+
+}
+
+#employeeTableView .column-header-background {
+    -fx-background-color: #EEEEEE;
+}
+
+
+#employeeTableView .column-header-background .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: #222831;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+#employeeTableView .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+#employeeTableView .table-cell {
+    -fx-text-fill: #222831;
+    -fx-font-size: 13px;
+    -fx-padding: 0.2em 0.5em 0.2em 0.5em;
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+}
+
+#employeeTableView .table-row-cell {
+    -fx-background-color: #EEEEEE;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+    -fx-border-radius : 6;
+    -fx-cell-size: 40px;
+}
+
+#employeeTableView .table-row-cell:selected {
+    -fx-background-color: #d6d6d6;
+    -fx-text-fill: #222831;
+    -fx-background-insets: 0;
+    -fx-border-radius : 4;
+
+}
+
+#employeeTableView .table-row-cell:selected .table-cell {
+    -fx-text-fill: #222831;
+    -fx-font-weight: bold;
+    -fx-border-color: #d6d6d6;
+}
+
+#employeeTableView .scroll-bar:vertical,
+#employeeTableView .scroll-bar:horizontal {
+    -fx-background-color: #f9f6f2;
+    -fx-border-radius : 8;
+}
+
+#employeeTableView .scroll-bar .thumb {
+    -fx-background-color: #d6d6d6;
+    -fx-background-radius: 2;
+}
+
+#employeeTableView .filler {
+    -fx-background-color: #EEEEEE;
+}
