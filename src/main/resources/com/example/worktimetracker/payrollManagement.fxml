@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -64,23 +63,47 @@
                      </padding>
                   </HBox>
                </children></VBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="시급 설정">
-                     <font>
-                        <Font name="BM HANNA Pro OTF" size="16.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="wageTextField" alignment="CENTER" prefHeight="25.0" prefWidth="132.0" promptText="쉼표를 제외해주세요" text="10030">
-                     <font>
-                        <Font name="BM HANNA Pro OTF" size="13.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <CheckBox mnemonicParsing="false" text="주휴수당 적용" />
+                  <HBox alignment="CENTER" prefHeight="38.0" prefWidth="260.0" spacing="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="시급 설정">
+                           <font>
+                              <Font name="BM HANNA Pro OTF" size="16.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="wageTextField" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="100.0" promptText="쉼표를 제외해주세요" text="10030">
+                           <font>
+                              <Font name="BM HANNA Pro OTF" size="13.0" />
+                           </font>
+                        </TextField>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="원" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="38.0" prefWidth="260.0" spacing="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1일 근로시간">
+                           <font>
+                              <Font name="BM HANNA Pro OTF" size="16.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="standardHourField" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="100.0" promptText="쉼표를 제외해주세요" text="8">
+                           <font>
+                              <Font name="BM HANNA Pro OTF" size="13.0" />
+                           </font>
+                        </TextField>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="시간" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="38.0" prefWidth="260.0" spacing="5.0">
+                     <children>
+                        <Text fx:id="totalWeeklyAllowanceText" strokeType="OUTSIDE" strokeWidth="0.0" text="당월 주휴수당 : ">
+                           <font>
+                              <Font name="BM HANNA Pro OTF" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>
@@ -89,7 +112,7 @@
          </BorderPane.margin></VBox>
    </right>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
               <HBox alignment="CENTER" prefHeight="40.0" prefWidth="890.0" spacing="3.0">
                   <Label text="연도">

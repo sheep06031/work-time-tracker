@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Font.loadFont(getClass().getResourceAsStream("/fonts/BMHANNAProOTF.otf"), 12);
+        Font.loadFont(getClass().getResourceAsStream("/fonts/BMHANNAProOTF.otf"), 10);
 
         String path = PathManager.getOrChoosePath(stage);
         if (path != null) {
