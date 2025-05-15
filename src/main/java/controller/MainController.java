@@ -1,5 +1,6 @@
 package controller;
 
+import employee.Employee;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -36,6 +37,7 @@ public class MainController {
     private void loadMyInfo() throws IOException {
         loadCenter("/com/example/worktimetracker/payrollManagement.fxml");
     }
+
 
     private void loadCenter(String fxmlPath) throws IOException {
         Parent content = FXMLLoader.load(getClass().getResource(fxmlPath));

@@ -19,6 +19,13 @@ public class Employee {
         this.phoneNumber = phoneNumber;
         employeeId = UUID.randomUUID().toString();
     }
+
+    public Employee(String name, String birth, String phoneNumber) {
+        this.name = name;
+        this.birth = birth;
+        this.phoneNumber = phoneNumber;
+        employeeId = UUID.randomUUID().toString();
+    }
     public String getEmployeeId() {return employeeId; }
     public String getName() { return name; }
     public String getBirth() { return birth; }

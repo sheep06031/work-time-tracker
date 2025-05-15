@@ -49,7 +49,7 @@
                   </VBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="260.0">
                      <children>
-                        <Button mnemonicParsing="false" text="직원 선택하기">
+                        <Button mnemonicParsing="false" onAction="#openSearchEmployeeWindow" text="직원 선택하기">
                            <font>
                               <Font name="BM HANNA Pro OTF" size="13.0" />
                            </font>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="720.0" prefWidth="653.0" style="-fx-background-color: EEEEEE;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchEmployeeController">
+    <children>
+        <HBox alignment="CENTER_RIGHT" layoutX="255.0" layoutY="19.0" prefHeight="34.0" prefWidth="282.0" spacing="2.0">
+            <children>
+                <ChoiceBox fx:id="searchChoiceBox" style="-fx-background-color: #EEEEEE; -fx-border-color: #d6d6d6; -fx-border-radius: 4; -fx-font-family: &quot;BM HANNA Pro OTF&quot;;" />
+                <TextField fx:id="searchTextField" alignment="CENTER" promptText="검색하기">
+                    <font>
+                        <Font name="BM HANNA Pro OTF" size="13.0" />
+                    </font>
+                </TextField>
+            </children>
+         <VBox.margin>
+            <Insets right="10.0" />
+         </VBox.margin>
+        </HBox>
+        <TableView id="employeeTableView" fx:id="employeeTableView" layoutX="40.0" layoutY="64.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onSort="#initialize" prefHeight="631.0" prefWidth="612.0" stylesheets="@../../../style.css" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="457.0" AnchorPane.topAnchor="64.0">
+            <columns>
+                <TableColumn fx:id="nameColumnForSearch" editable="false" maxWidth="-1.0" minWidth="190.0" prefWidth="190.0" resizable="false" text="이름" />
+                <TableColumn fx:id="birthColumnForSearch" minWidth="200.0" prefWidth="200.0" text="생년월일" />
+                <TableColumn fx:id="phoneNumberColumnForSearch" minWidth="200.0" prefWidth="200.0" text="전화번호" />
+            </columns>
+        </TableView>
+        <HBox alignment="CENTER" layoutX="696.0" layoutY="665.0" prefHeight="38.0" prefWidth="345.0" spacing="20.0">
+         <children>
+                <Button fx:id="selectEmployeeButton" mnemonicParsing="false" onAction="#selectEmployee" style="-fx-background-color: #EEEEEE; -fx-border-radius: 4; -fx-border-color: #d6d6d6; -fx-font-family: &quot;BM HANNA Pro OTF&quot;;" text="사원 선택하기" />
+         </children></HBox>
+    </children>
+</VBox>

@@ -1,7 +1,11 @@
 package controller;
 
+import employee.Employee;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -9,7 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.text.NumberFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -24,7 +30,10 @@ public class CalendarController {
     @FXML private TextField wageTextField;
     @FXML private TextField standardHourField;
     @FXML private Text totalWeeklyAllowanceText;
+    @FXML private Text nameText;
+    @FXML private Text phoneNumberText;
 
+    private Employee employee;
     private final Map<LocalDate, Integer> holidayPayMap = new HashMap<>();
     private final Map<LocalDate, Integer> workHourMap = new HashMap<>();
     private final NumberFormat numberFormat = NumberFormat.getInstance();
@@ -203,5 +212,24 @@ public class CalendarController {
         } catch (NumberFormatException ignored) {}
 
         totalWeeklyAllowanceText.setText("당월 주휴수당 총합: " + numberFormat.format(totalWeeklyAllowance) + "원");
+    }
+
+    @FXML
+    private void openSearchEmployeeWindow() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/worktimetracker/searchEmployee.fxml"));
+        Parent root = loader.load();
+
+        SearchEmployeeController controller = loader.getController();
+        controller.setCalendarController(this);
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+        if (nameText != null) nameText.setText(employee.getName());
+        if (phoneNumberText != null) phoneNumberText.setText(employee.getPhoneNumber());
     }
 }
