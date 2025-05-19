@@ -22,7 +22,7 @@ public class PathManager {
             File selectedDirectory = directoryChooser.showDialog(stage);
             if (selectedDirectory != null) {
                 prefs.put(PREF_KEY_PATH, selectedDirectory.getAbsolutePath());
-                currentPath = selectedDirectory.getAbsolutePath(); // 수정된 부분!
+                currentPath = selectedDirectory.getAbsolutePath();
                 return currentPath;
             } else {
                 return null;

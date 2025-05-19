@@ -17,7 +17,7 @@ public class Employee {
         this.address = address;
         this.employeedate = employeedate;
         this.phoneNumber = phoneNumber;
-        employeeId = UUID.randomUUID().toString();
+        employeeId = name + "_" + System.currentTimeMillis();
     }
 
     public Employee(String name, String birth, String phoneNumber) {

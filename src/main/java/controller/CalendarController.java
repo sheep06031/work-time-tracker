@@ -1,21 +1,19 @@
 package controller;
 
+import util.PathManager;
 import employee.Employee;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.text.NumberFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -23,7 +21,6 @@ import java.time.YearMonth;
 import java.util.*;
 
 public class CalendarController {
-
     @FXML private ComboBox<Integer> yearCombo;
     @FXML private ComboBox<Integer> monthCombo;
     @FXML private GridPane calendarGrid;
@@ -32,6 +29,8 @@ public class CalendarController {
     @FXML private Text totalWeeklyAllowanceText;
     @FXML private Text nameText;
     @FXML private Text phoneNumberText;
+    @FXML private Text total;
+    @FXML private Button saveButton;
 
     private Employee employee;
     private final Map<LocalDate, Integer> holidayPayMap = new HashMap<>();
@@ -58,15 +57,6 @@ public class CalendarController {
         standardHourField.textProperty().addListener((obs, oldVal, newVal) -> calculateWeeklyAllowance(yearCombo.getValue(), monthCombo.getValue()));
 
         buildCalendar(currentYear, LocalDate.now().getMonthValue());
-    }
-
-    @FXML
-    private void onUpdateCalendar() {
-        Integer year = yearCombo.getValue();
-        Integer month = monthCombo.getValue();
-        if (year != null && month != null) {
-            buildCalendar(year, month);
-        }
     }
 
     private void buildCalendar(int year, int month) {
@@ -109,6 +99,22 @@ public class CalendarController {
             Label payLabel = new Label("급여: 0원");
             LocalDate currentDate = LocalDate.of(year, month, day);
 
+            Integer loadedHours = workHourMap.get(currentDate);
+            if (loadedHours != null) {
+                workInput.setText(String.valueOf(loadedHours));
+            }
+
+            if (holidayPayMap.containsKey(currentDate)) {
+                holidayCheck.setSelected(true);
+            } else {
+                DayOfWeek dayOfWeek = currentDate.getDayOfWeek();
+                if (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY) {
+                    holidayCheck.setSelected(true);
+                }
+            }
+
+            updatePay(payLabel, workInput, holidayCheck, box, currentDate);
+
             workInput.textProperty().addListener((obs, oldVal, newVal) -> {
                 updatePay(payLabel, workInput, holidayCheck, box, currentDate);
                 calculateWeeklyAllowance(year, month);
@@ -117,12 +123,6 @@ public class CalendarController {
             holidayCheck.selectedProperty().addListener((obs, oldVal, isSelected) -> {
                 updatePay(payLabel, workInput, holidayCheck, box, currentDate);
             });
-
-            DayOfWeek dayOfWeek = currentDate.getDayOfWeek();
-            if (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY) {
-                holidayCheck.setSelected(true);
-                updatePay(payLabel, workInput, holidayCheck, box, currentDate);
-            }
 
             box.getChildren().addAll(dateLabel, payLabel, holidayCheck, workInput);
             calendarGrid.add(box, col, row);
@@ -135,7 +135,10 @@ public class CalendarController {
         }
 
         calculateWeeklyAllowance(year, month);
+        calculateTotalMonthlySalary(year, month);
+        saveButton.setDisable(employee == null);
     }
+
 
     private void updatePay(Label payLabel, TextField workInput, CheckBox holidayCheck, VBox box, LocalDate date) {
         String input = workInput.getText().trim();
@@ -171,7 +174,6 @@ public class CalendarController {
             }
 
             payLabel.setText("급여: " + numberFormat.format(pay) + "원");
-
         } catch (NumberFormatException e) {
             payLabel.setText("급여: -");
             holidayPayMap.remove(date);
@@ -180,29 +182,19 @@ public class CalendarController {
     }
 
     private void calculateWeeklyAllowance(int year, int month) {
-        YearMonth yearMonth = YearMonth.of(year, month);
-        LocalDate firstDay = yearMonth.atDay(1);
-        LocalDate lastDay = yearMonth.atEndOfMonth();
-
         Map<Integer, Integer> weekHourSum = new HashMap<>();
 
         for (Map.Entry<LocalDate, Integer> entry : workHourMap.entrySet()) {
             LocalDate date = entry.getKey();
             if (date.getMonthValue() != month || date.getYear() != year) continue;
-
             int week = date.getDayOfMonth() / 7;
             weekHourSum.put(week, weekHourSum.getOrDefault(week, 0) + entry.getValue());
         }
 
         int totalWeeklyAllowance = 0;
         try {
-            String wageStr = wageTextField.getText().replace(",", "").trim();
-            int wage = Integer.parseInt(wageStr);
-
-            int standardHours = 8;
-            try {
-                standardHours = Integer.parseInt(standardHourField.getText().trim());
-            } catch (NumberFormatException ignored) {}
+            int wage = Integer.parseInt(wageTextField.getText().replace(",", "").trim());
+            int standardHours = Integer.parseInt(standardHourField.getText().trim());
 
             for (int totalHours : weekHourSum.values()) {
                 if (totalHours >= 15) {
@@ -212,24 +204,158 @@ public class CalendarController {
         } catch (NumberFormatException ignored) {}
 
         totalWeeklyAllowanceText.setText("당월 주휴수당 총합: " + numberFormat.format(totalWeeklyAllowance) + "원");
+        calculateTotalMonthlySalary(year, month);
+    }
+
+    private void calculateTotalMonthlySalary(int year, int month) {
+        int totalPay = 0;
+
+        for (Map.Entry<LocalDate, Integer> entry : workHourMap.entrySet()) {
+            LocalDate date = entry.getKey();
+            if (date.getYear() != year || date.getMonthValue() != month) continue;
+
+            int hours = entry.getValue();
+            int wage;
+            try {
+                wage = Integer.parseInt(wageTextField.getText().replace(",", "").trim());
+            } catch (NumberFormatException e) {
+                total.setText("-");
+                return;
+            }
+
+            boolean isHoliday = holidayPayMap.containsKey(date);
+            int dailyPay = wage * hours;
+
+            if (isHoliday) {
+                dailyPay = hours <= 8 ? (int)(dailyPay * 1.5) : (int)(dailyPay * 2);
+            }
+
+            totalPay += dailyPay;
+        }
+
+        try {
+            int weeklyAllowance = Integer.parseInt(totalWeeklyAllowanceText.getText().replaceAll("[^0-9]", ""));
+            totalPay += weeklyAllowance;
+        } catch (NumberFormatException ignored) {}
+
+        total.setText(numberFormat.format(totalPay) + "원");
     }
 
     @FXML
-    private void openSearchEmployeeWindow() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/worktimetracker/searchEmployee.fxml"));
-        Parent root = loader.load();
+    private void SaveButtonClicked() {
+        if (employee == null) return;
+        saveWorkHistory();
+    }
 
-        SearchEmployeeController controller = loader.getController();
-        controller.setCalendarController(this);
+    private void saveWorkHistory() {
+        try {
+            String path = PathManager.currentPath;
+            String dirPath = path + File.separator + "Workhistory";
+            File file = new File(dirPath, employee.getEmployeeId() + ".csv");
 
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+            Map<LocalDate, String> existingLines = new TreeMap<>();
+            if (file.exists()) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
+                String header = reader.readLine();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] tokens = line.split(",");
+                    if (tokens.length > 0) {
+                        LocalDate date = LocalDate.parse(tokens[0].trim());
+                        existingLines.put(date, line);
+                    }
+                }
+                reader.close();
+            }
+
+            int wage = Integer.parseInt(wageTextField.getText().replace(",", "").trim());
+            int standardHour = Integer.parseInt(standardHourField.getText().trim());
+            YearMonth yearMonth = YearMonth.of(yearCombo.getValue(), monthCombo.getValue());
+
+            for (int i = 1; i <= yearMonth.lengthOfMonth(); i++) {
+                LocalDate date = yearMonth.atDay(i);
+                Integer hours = workHourMap.get(date);
+                if (hours == null) continue;
+                boolean isHoliday = holidayPayMap.containsKey(date);
+                int pay = wage * hours;
+                int holidayBonus = isHoliday ? (hours <= 8 ? (int)(pay * 0.5) : pay) : 0;
+                pay += holidayBonus;
+                int weeklyBonus = 0;
+                int totalWeeklyHour = 0;
+                for (int j = 0; j < 7; j++) {
+                    LocalDate weekDate = date.with(DayOfWeek.MONDAY).plusDays(j);
+                    if (workHourMap.containsKey(weekDate)) {
+                        totalWeeklyHour += workHourMap.get(weekDate);
+                    }
+                }
+                if (totalWeeklyHour >= 15) {
+                    weeklyBonus = wage * standardHour;
+                }
+                int total = pay + weeklyBonus;
+
+                existingLines.put(date, String.format("%s,%d,%d,%d,%s,%d,%d,%d",
+                        date, standardHour, wage, hours, isHoliday ? "true" : "false", pay, weeklyBonus, total));
+            }
+
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"));
+            writer.write("날짜,1일 근로시간,시급,당일 근무시간,휴일지정,급여,주휴수당,월급\n");
+            for (String line : existingLines.values()) {
+                writer.write(line + "\n");
+            }
+            writer.close();
+
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadWorkHistory(Employee employee) {
+        try {
+            String path = PathManager.currentPath;
+            String dirPath = path + File.separator + "Workhistory";
+            File file = new File(dirPath, employee.getEmployeeId() + ".csv");
+
+            if (!file.exists()) return;
+
+            Scanner scanner = new Scanner(file, "UTF-8");
+            if (scanner.hasNextLine()) scanner.nextLine();
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] tokens = line.split(",");
+                if (tokens.length < 8) continue;
+
+                LocalDate date = LocalDate.parse(tokens[0].trim());
+                int workedHours = Integer.parseInt(tokens[3].trim());
+                boolean isHoliday = tokens[4].trim().equalsIgnoreCase("true");
+
+                workHourMap.put(date, workedHours);
+                if (isHoliday) holidayPayMap.put(date, 0);
+            }
+
+            scanner.close();
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
         if (nameText != null) nameText.setText(employee.getName());
         if (phoneNumberText != null) phoneNumberText.setText(employee.getPhoneNumber());
+        if (saveButton != null) saveButton.setDisable(false);
+        loadWorkHistory(employee);
+        buildCalendar(yearCombo.getValue(), monthCombo.getValue());
+    }
+
+    @FXML
+    private void openSearchEmployeeWindow() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/worktimetracker/searchEmployee.fxml"));
+        Parent root = loader.load();
+        SearchEmployeeController controller = loader.getController();
+        controller.setCalendarController(this);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

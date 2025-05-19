@@ -65,7 +65,7 @@
                </children></VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="38.0" prefWidth="260.0" spacing="5.0">
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="260.0" spacing="5.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="시급 설정">
                            <font>
@@ -80,7 +80,7 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="원" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="38.0" prefWidth="260.0" spacing="5.0">
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="260.0" spacing="5.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1일 근로시간">
                            <font>
@@ -95,7 +95,7 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="시간" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="38.0" prefWidth="260.0" spacing="5.0">
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="260.0" spacing="5.0">
                      <children>
                         <Text fx:id="totalWeeklyAllowanceText" strokeType="OUTSIDE" strokeWidth="0.0" text="당월 주휴수당 : ">
                            <font>
@@ -104,8 +104,23 @@
                         </Text>
                      </children>
                   </HBox>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="260.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="월급 : ">
+                           <font>
+                              <Font name="BM HANNA Pro OTF" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="total" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                           <font>
+                              <Font name="BM HANNA Pro OTF" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#SaveButtonClicked" text="save" />
          </children>
          <BorderPane.margin>
             <Insets left="40.0" />

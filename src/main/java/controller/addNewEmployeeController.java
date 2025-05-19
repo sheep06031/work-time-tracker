@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 
 public class addNewEmployeeController {
     private EmployeeManager employeeManager = EmployeeManager.instance;
-    //사원 추가 창
     @FXML
     private TextField nameField;
     @FXML
