@@ -3,7 +3,7 @@ package employee;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import util.FileChecker;
-import csvControl.*;
+import repository.*;
 
 import java.io.IOException;
 
@@ -16,12 +16,11 @@ public class EmployeeManager {
     }
 
 
-    public void addEmployee(Employee emp) {
-        employeeList.add(emp);
-
-    }
+    public void addEmployee(Employee emp) { employeeList.add(emp); }
 
     public void deleteEmployee(Employee emp) {
+        FileChecker fileChecker = new FileChecker();
+        fileChecker.deletePayrollFile(emp);
         employeeList.remove(emp);
         updateCsvFile();
     }

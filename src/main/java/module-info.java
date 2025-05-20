@@ -3,12 +3,23 @@ module com.example.worktimetracker {
     requires javafx.fxml;
     requires java.prefs;
 
-
-    opens com.example.worktimetracker to javafx.fxml;
     exports com.example.worktimetracker;
 
-    opens employee to javafx.base, javafx.fxml;
-    exports controller;
-    opens controller to javafx.fxml;
+    opens com.example.worktimetracker to javafx.fxml;
 
+    exports controller.main;
+    opens controller.main to javafx.fxml;
+
+    exports controller.calendar;
+    opens controller.calendar to javafx.fxml;
+
+    exports controller.employee;
+    opens controller.employee to javafx.fxml;
+
+    exports employee;
+    opens employee to javafx.fxml;
+
+    exports repository;
+    exports service;
+    exports util;
 }

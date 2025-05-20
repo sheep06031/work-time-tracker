@@ -1,5 +1,6 @@
-package controller;
+package controller.employee;
 
+import controller.calendar.CalendarController;
 import employee.Employee;
 import employee.EmployeeManager;
 

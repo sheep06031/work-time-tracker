@@ -56,4 +56,18 @@ public class FileChecker {
             return false;
         }
     }
+
+    public void deletePayrollFile(Employee employee) {
+        String path = PathManager.currentPath;
+        if (path == null) {
+            System.err.println("경로가 설정되지 않았습니다.");
+        }
+
+        String WorkhistoryDirectoryPath = path + File.separator + "Workhistory";
+        String fileName = employee.getEmployeeId() + ".csv";
+        String workhistoryFilePath = WorkhistoryDirectoryPath + File.separator + fileName;
+        File workhistoryFile = new File(workhistoryFilePath);
+
+        if(workhistoryFile.exists()){ workhistoryFile.delete(); }
+    }
 }

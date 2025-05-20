@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="720.0" prefWidth="653.0" style="-fx-background-color: EEEEEE;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchEmployeeController">
+<VBox alignment="CENTER" prefHeight="720.0" prefWidth="653.0" style="-fx-background-color: EEEEEE;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.employee.SearchEmployeeController">
     <children>
         <HBox alignment="CENTER_RIGHT" layoutX="255.0" layoutY="19.0" prefHeight="34.0" prefWidth="282.0" spacing="2.0">
             <children>
