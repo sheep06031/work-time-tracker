@@ -12,16 +12,19 @@ public class EmployeeCsvReader {
         if (!file.exists()) {
             throw new FileNotFoundException("CSV 파일을 찾을 수 없습니다: " + filePath);
         }
-        try (BufferedReader br = new BufferedReader(
-                new InputStreamReader(new FileInputStream(file), "UTF-8"))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"))) {
+            br.readLine();                     // header skip
             String line;
-            boolean firstLine = true;
             while ((line = br.readLine()) != null) {
-                if (firstLine) { firstLine = false; continue; }
-                String[] data = line.split(",");
-                if (data.length == 6) {
-                    employees.add(new Employee(data[1], data[2], data[3], data[4], data[5]));
-                }
+                String[] t = line.split(",");
+                Employee e = new Employee(
+                        t[0].trim(),           // id
+                        t[1].trim(),           // name
+                        t[2].trim(),           // birth
+                        t[3].trim(),           // address
+                        t[4].trim(),           // employeedate
+                        t[5].trim());          // phone
+                employees.add(e);
             }
         }
         return employees;

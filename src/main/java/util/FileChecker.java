@@ -44,10 +44,10 @@ public class FileChecker {
         String workhistoryFilePath = WorkhistoryDirectoryPath + File.separator + fileName;
         File workhistoryFile = new File(workhistoryFilePath);
 
-        if (workhistoryFile.exists() && workhistoryFile.isDirectory()) {
+        if (workhistoryFile.exists() && !workhistoryFile.isDirectory()) {
             return true;
         } else {
-            String header = "날짜,1일 근로시간,시급,당일 근무시간,휴일지정,급여,주휴수당,월급\n";
+            String header = "날짜,1일 근로시간,시급,당일 근무시간,휴일지정,급여\n";
             try (Writer writer = new OutputStreamWriter(new FileOutputStream(workhistoryFilePath), "UTF-8")) {
                 writer.write(header);
             } catch (IOException e) {

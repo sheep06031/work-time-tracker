@@ -15,8 +15,10 @@ public class EmployeeManager {
         return employeeList;
     }
 
-
-    public void addEmployee(Employee emp) { employeeList.add(emp); }
+    public void addEmployee(Employee emp) {
+        employeeList.add(emp);
+        updateCsvFile();
+    }
 
     public void deleteEmployee(Employee emp) {
         FileChecker fileChecker = new FileChecker();

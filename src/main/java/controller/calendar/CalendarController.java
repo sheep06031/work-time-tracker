@@ -11,6 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import service.WorkHistoryService;
+import util.FileChecker;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -56,8 +57,12 @@ public class CalendarController {
 
     @FXML
     private void SaveButtonClicked() {
-        if (employee != null)
-            workHistoryService.saveWorkHistory(employee, workHourMap, holidayPayMap,
+        if (employee == null) return;
+
+        new FileChecker().checkPayrollFile(employee);
+
+
+        workHistoryService.saveWorkHistory(employee, workHourMap, holidayPayMap,
                     wageTextField, standardHourField, yearCombo, monthCombo);
     }
 

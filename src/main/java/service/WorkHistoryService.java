@@ -32,28 +32,31 @@ public class WorkHistoryService {
                 workMap.put(date, hours);
                 if (isHoliday) holidayMap.put(date, 0);
             }
-        } catch (IOException ignored) {
-        }
+        } catch (IOException ignored) {}
     }
 
     public void saveWorkHistory(Employee emp, Map<LocalDate, Integer> workMap, Map<LocalDate, Integer> holidayMap,
                                 TextField wageField, TextField hourField, ComboBox<Integer> yearCombo, ComboBox<Integer> monthCombo) {
-        String dir = PathManager.currentPath + File.separator + "Workhistory";
-        File file = new File(dir, emp.getEmployeeId() + ".csv");
+        String path = PathManager.currentPath + File.separator + "Workhistory";
+        File file = new File(path, emp.getEmployeeId() + ".csv");
         Map<LocalDate, String> existing = new TreeMap<>();
 
+        // 1. 기존 CSV 데이터 모두 불러오기 (달 상관없이)
         if (file.exists()) {
+            System.out.println("work");
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"))) {
-                reader.readLine(); // skip header
+                reader.readLine(); // 헤더 skip
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] tokens = line.split(",");
-                    existing.put(LocalDate.parse(tokens[0].trim()), line);
+                    if (tokens.length < 1) continue;
+                    LocalDate date = LocalDate.parse(tokens[0].trim());
+                    existing.put(date, line);
                 }
-            } catch (IOException ignored) {
-            }
+            } catch (IOException ignored) {}
         }
 
+        // 2. 현재 달 정보 계산 후 덮어쓰기
         int wage = Integer.parseInt(wageField.getText().replace(",", "").trim());
         int stdHour = Integer.parseInt(hourField.getText().trim());
         YearMonth ym = YearMonth.of(yearCombo.getValue(), monthCombo.getValue());
@@ -62,6 +65,7 @@ public class WorkHistoryService {
             LocalDate date = ym.atDay(i);
             Integer hours = workMap.get(date);
             if (hours == null) continue;
+
             boolean isHoliday = holidayMap.containsKey(date);
             int pay = wage * hours;
             int holidayBonus = isHoliday ? (hours <= 8 ? (int) (pay * 0.5) : pay) : 0;
@@ -69,16 +73,32 @@ public class WorkHistoryService {
             int weeklyBonus = calcWeeklyBonus(date, workMap, stdHour, wage);
             int total = pay + weeklyBonus;
 
-            existing.put(date, String.format("%s,%d,%d,%d,%s,%d,%d,%d",
-                    date, stdHour, wage, hours, isHoliday ? "true" : "false", pay, weeklyBonus, total));
+            existing.put(date, String.format("%s,%d,%d,%d,%s,%d",
+                    date, stdHour, wage, hours, isHoliday ? "true" : "false", pay));
         }
 
+        // 3. 전체 데이터를 다시 저장
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
-            writer.write("날짜,1일 근로시간,시급,당일 근무시간,휴일지정,급여,주휴수당,월급\n");
-            for (String l : existing.values()) writer.write(l + "\n");
-        } catch (IOException ignored) {
-        }
+            writer.write("날짜,1일 근로시간,시급,당일 근무시간,휴일지정,급여\n");
+            for (String l : existing.values()) {
+                writer.write(l + "\n");
+            }
+        } catch (IOException ignored) {}
+
+        // 4. 월간 통계 저장 (요약 CSV)
+        int totalHours = workMap.entrySet().stream()
+                .filter(e -> e.getKey().getYear() == ym.getYear() && e.getKey().getMonthValue() == ym.getMonthValue())
+                .mapToInt(Map.Entry::getValue).sum();
+
+        int weeklyAllowance = calculateWeeklyAllowance(workMap, wageField, hourField,
+                ym.getYear(), ym.getMonthValue());
+
+        int totalPay = calculateMonthlyTotal(workMap, holidayMap, wageField,
+                weeklyAllowance, ym.getYear(), ym.getMonthValue());
+
+        new MonthlySummaryService().updateSummary(emp, ym, totalHours, weeklyAllowance, totalPay);
     }
+
 
     public void buildCalendar(Employee employee, int year, int month, GridPane calendarGrid,
                               TextField wageField, TextField hourField,

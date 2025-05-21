@@ -2,14 +2,13 @@ package employee;
 
 import java.util.UUID;
 
-
 public class Employee {
     private String name;
     private String birth;
     private String address;
     private String employeedate;
     private String phoneNumber;
-    private String employeeId;
+    private final String employeeId;
 
     public Employee(String name, String birth, String address, String employeedate, String phoneNumber) {
         this.name = name;
@@ -17,7 +16,15 @@ public class Employee {
         this.address = address;
         this.employeedate = employeedate;
         this.phoneNumber = phoneNumber;
-        employeeId = name + "_" + System.currentTimeMillis();
+        this.employeeId = UUID.randomUUID().toString();
+    }
+    public Employee(String id, String name, String birth, String address, String employeedate, String phone) {
+        this.employeeId = id;
+        this.name = name;
+        this.birth = birth;
+        this.address = address;
+        this.employeedate = employeedate;
+        this.phoneNumber = phone;
     }
 
     public String getEmployeeId() {return employeeId; }

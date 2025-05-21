@@ -1,11 +1,163 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.main.MainController">
+<BorderPane prefHeight="720.0" prefWidth="1080.0" style="-fx-font-family: &quot;BM HANNA Pro OTF&quot;;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.home.HomeController">
    <children>
-      <Label layoutX="219.0" layoutY="174.0" prefHeight="83.0" prefWidth="270.0" text="This is Home page" />
    </children>
-</AnchorPane>
+   <center>
+      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="294.0" prefWidth="1080.0" style="-fx-font-size: 40;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="490.0" spacing="20.0" style="-fx-border-color: black; -fx-border-radius: 30; -fx-border-width: 3;">
+               <children>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="484.0" spacing="5.0" style="-fx-font-size: 20;">
+                     <children>
+                        <ChoiceBox fx:id="yearChoiceBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="70.0" style="-fx-font-size: 15;" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="년    " />
+                        <ChoiceBox fx:id="monthChoiceBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" style="-fx-font-size: 15;" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="월" />
+                     </children>
+                     <padding>
+                        <Insets right="15.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="484.0" />
+                  <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-font-family: &quot;BM HANNA Pro OTF&quot;;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="총 직원 수 : " />
+                        <Text fx:id="totalEmployee" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" style="-fx-font-family: &quot;BM HANNA Pro OTF&quot;;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="총 근무시간 : " />
+                        <Text fx:id="totalWorkTime" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" style="-fx-font-family: &quot;BM HANNA Pro OTF&quot;;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="총 예상 급여 : " />
+                        <Text fx:id="totalPayroll" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="40.0" left="20.0" />
+               </GridPane.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="386.0" prefWidth="540.0" spacing="20.0" GridPane.columnIndex="1">
+               <children>
+                  <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="490.0" style="-fx-border-color: black; -fx-border-radius: 30; -fx-border-width: 3;">
+                     <children>
+                        <VBox prefHeight="155.0" prefWidth="524.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="최근 등록 직원" />
+                              <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="91.0" prefWidth="524.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" top="10.0" />
+                           </padding></VBox>
+                        <VBox prefHeight="168.0" prefWidth="524.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="생일" />
+                              <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="118.0" prefWidth="514.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding></VBox>
+                     </children>
+                  </VBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="40.0" right="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </GridPane>
+   </center>
+   <bottom>
+      <VBox prefHeight="292.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <children>
+            <LineChart>
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+         </children>
+      </VBox>
+   </bottom>
+   <top>
+      <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="todayText" strokeType="OUTSIDE" strokeWidth="0.0" text="오늘은">
+               <font>
+                  <Font name="BM HANNA Pro OTF" size="36.0" />
+               </font>
+            </Text>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </HBox>
+   </top>
+</BorderPane>

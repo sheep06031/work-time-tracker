@@ -63,7 +63,7 @@
                      </padding>
                   </HBox>
                </children></VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="311.0" prefWidth="260.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="260.0" spacing="5.0">
                      <children>
@@ -118,9 +118,14 @@
                         </Text>
                      </children>
                   </HBox>
+                  <VBox alignment="CENTER" prefHeight="150.0" prefWidth="260.0" spacing="10.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="다음달로 넘어가기 전에 꼭 저장해주세요!" />
+                        <Button fx:id="saveButton" alignment="CENTER" mnemonicParsing="false" onAction="#SaveButtonClicked" style="-fx-background-color: #EEEEEE; -fx-border-radius: 4; -fx-border-color: #d6d6d6; -fx-font-size: &quot;BM HANNA Pro OTF&quot;;" text="저장하기" />
+                     </children>
+                  </VBox>
                </children>
             </VBox>
-            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#SaveButtonClicked" text="save" />
          </children>
          <BorderPane.margin>
             <Insets left="40.0" />
@@ -135,14 +140,14 @@
                      <Font name="BM HANNA Pro OTF" size="24.0" />
                   </font>
                </Label>
-                  <ComboBox fx:id="yearCombo" />
+                  <ComboBox fx:id="yearCombo" style="-fx-background-color: #EEEEEE; -fx-border-radius: 4; -fx-border-color: #d6d6d6; -fx-font-family: &quot;BM HANNA Pro OTF&quot;;" />
                <VBox prefHeight="42.0" prefWidth="22.0" />
                   <Label text="달">
                   <font>
                      <Font name="BM HANNA Pro OTF" size="24.0" />
                   </font>
                </Label>
-                  <ComboBox fx:id="monthCombo" />
+                  <ComboBox fx:id="monthCombo" style="-fx-background-color: #EEEEEE; -fx-border-radius: 4; -fx-border-color: #d6d6d6; -fx-font-family: &quot;BM HANNA Pro OTF&quot;;" />
               </HBox>
               <GridPane fx:id="calendarGrid" gridLinesVisible="true" hgap="5" vgap="5" />
          </children>

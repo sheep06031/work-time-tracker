@@ -16,6 +16,9 @@ module com.example.worktimetracker {
     exports controller.employee;
     opens controller.employee to javafx.fxml;
 
+    exports controller.home;
+    opens controller.home to javafx.fxml;
+
     exports employee;
     opens employee to javafx.fxml;
 
