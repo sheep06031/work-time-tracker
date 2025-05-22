@@ -13,7 +13,7 @@ public class EmployeeCsvReader {
             throw new FileNotFoundException("CSV 파일을 찾을 수 없습니다: " + filePath);
         }
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"))) {
-            br.readLine();                     // header skip
+            br.readLine();
             String line;
             while ((line = br.readLine()) != null) {
                 String[] t = line.split(",");

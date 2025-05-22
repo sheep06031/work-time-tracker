@@ -92,10 +92,23 @@
                         <VBox prefHeight="155.0" prefWidth="524.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="최근 등록 직원" />
-                              <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="91.0" prefWidth="524.0">
+                              <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="450.0" spacing="5.0">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
+                                 <children>
+                                    <Text fx:id="latestEmp1Text" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                                       <font>
+                                          <Font name="BM HANNA Pro OTF" size="30.0" />
+                                       </font></Text>
+                                    <Text fx:id="latestEmp2Text" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                                       <font>
+                                          <Font name="BM HANNA Pro OTF" size="30.0" />
+                                       </font></Text>
+                                 </children>
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
                               </VBox>
                            </children>
                            <padding>
@@ -104,10 +117,25 @@
                         <VBox prefHeight="168.0" prefWidth="524.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="생일" />
-                              <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="118.0" prefWidth="514.0">
+                              <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="450.0" spacing="5.0">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
+                                 <children>
+                                    <Text fx:id="nearBirth1" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font name="BM HANNA Pro OTF" size="30.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="nearBirth2" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                                       <font>
+                                          <Font name="BM HANNA Pro OTF" size="30.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
                               </VBox>
                            </children>
                            <padding>
@@ -132,7 +160,7 @@
    <bottom>
       <VBox prefHeight="292.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <children>
-            <LineChart>
+            <LineChart fx:id="lineChart">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>

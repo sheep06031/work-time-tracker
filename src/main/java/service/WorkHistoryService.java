@@ -41,11 +41,9 @@ public class WorkHistoryService {
         File file = new File(path, emp.getEmployeeId() + ".csv");
         Map<LocalDate, String> existing = new TreeMap<>();
 
-        // 1. 기존 CSV 데이터 모두 불러오기 (달 상관없이)
         if (file.exists()) {
-            System.out.println("work");
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"))) {
-                reader.readLine(); // 헤더 skip
+                reader.readLine();
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] tokens = line.split(",");
@@ -56,7 +54,6 @@ public class WorkHistoryService {
             } catch (IOException ignored) {}
         }
 
-        // 2. 현재 달 정보 계산 후 덮어쓰기
         int wage = Integer.parseInt(wageField.getText().replace(",", "").trim());
         int stdHour = Integer.parseInt(hourField.getText().trim());
         YearMonth ym = YearMonth.of(yearCombo.getValue(), monthCombo.getValue());
@@ -77,7 +74,6 @@ public class WorkHistoryService {
                     date, stdHour, wage, hours, isHoliday ? "true" : "false", pay));
         }
 
-        // 3. 전체 데이터를 다시 저장
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"))) {
             writer.write("날짜,1일 근로시간,시급,당일 근무시간,휴일지정,급여\n");
             for (String l : existing.values()) {
@@ -85,7 +81,6 @@ public class WorkHistoryService {
             }
         } catch (IOException ignored) {}
 
-        // 4. 월간 통계 저장 (요약 CSV)
         int totalHours = workMap.entrySet().stream()
                 .filter(e -> e.getKey().getYear() == ym.getYear() && e.getKey().getMonthValue() == ym.getMonthValue())
                 .mapToInt(Map.Entry::getValue).sum();
@@ -162,10 +157,19 @@ public class WorkHistoryService {
 
     private void updatePay(Label label, TextField input, CheckBox check, VBox box, LocalDate date,
                            TextField wageField, Map<LocalDate, Integer> workMap, Map<LocalDate, Integer> holidayMap) {
+        if (check.isSelected()) {
+            box.setStyle("-fx-background-color: #fde3e6; -fx-border-color: lightgray;");
+            holidayMap.put(date, 0);
+        } else {
+            box.setStyle("-fx-background-color: transparent; -fx-border-color: lightgray;");
+            holidayMap.remove(date);
+        }
+
         try {
             int wage = Integer.parseInt(wageField.getText().replace(",", "").trim());
             int hours = Integer.parseInt(input.getText().trim());
             int pay = wage * hours;
+
 
             workMap.put(date, hours);
             if (check.isSelected()) {

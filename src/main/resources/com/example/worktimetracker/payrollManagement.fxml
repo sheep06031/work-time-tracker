@@ -49,7 +49,7 @@
                   </VBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="260.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#openSearchEmployeeWindow" text="직원 선택하기">
+                        <Button mnemonicParsing="false" onAction="#openSearchEmployeeWindow" style="-fx-background-color: #EEEEEE; -fx-border-radius: 4; -fx-border-color: #d6d6d6;" text="직원 선택하기">
                            <font>
                               <Font name="BM HANNA Pro OTF" size="13.0" />
                            </font>
@@ -121,7 +121,7 @@
                   <VBox alignment="CENTER" prefHeight="150.0" prefWidth="260.0" spacing="10.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="다음달로 넘어가기 전에 꼭 저장해주세요!" />
-                        <Button fx:id="saveButton" alignment="CENTER" mnemonicParsing="false" onAction="#SaveButtonClicked" style="-fx-background-color: #EEEEEE; -fx-border-radius: 4; -fx-border-color: #d6d6d6; -fx-font-size: &quot;BM HANNA Pro OTF&quot;;" text="저장하기" />
+                        <Button fx:id="saveButton" alignment="CENTER" mnemonicParsing="false" onAction="#SaveButtonClicked" style="-fx-background-color: #EEEEEE; -fx-border-radius: 4; -fx-border-color: #d6d6d6; -fx-font-family: &quot;BM HANNA Pro OTF&quot;;" text="저장하기" />
                      </children>
                   </VBox>
                </children>
